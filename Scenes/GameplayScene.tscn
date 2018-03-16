@@ -1,0 +1,212 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Scripts/GameplayScene.gd" type="Script" id=1]
+[ext_resource path="res://GameObjects/TurnRightCommandObject.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameObjects/TurnLeftCommandObject.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameObjects/ShootCommandObject.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameObjects/AsteroidObject.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GameObjects/BlackHoleObject.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/spacebg_animation/frame1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/spacebg_animation/frame2.png" type="Texture" id=8]
+[ext_resource path="res://Assets/spacebg_animation/frame3.png" type="Texture" id=9]
+[ext_resource path="res://Assets/spacebg_animation/frame4.png" type="Texture" id=10]
+[ext_resource path="res://Assets/spacebg_animation/frame5.png" type="Texture" id=11]
+[ext_resource path="res://Assets/spacebg_animation/frame6.png" type="Texture" id=12]
+[ext_resource path="res://GameObjects/ShipObject.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/sprite/bar.png" type="Texture" id=14]
+[ext_resource path="res://Assets/sprite/microwave.png" type="Texture" id=15]
+[ext_resource path="res://Assets/sprite/monitor.png" type="Texture" id=16]
+[ext_resource path="res://Assets/font/THSarabunNew.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://GameObjects/CommandExecutePoint.tscn" type="PackedScene" id=18]
+[ext_resource path="res://GameObjects/GameplayHUDObject.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/GameOverHUD.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Assets/audio/damagemixed1.wav" type="AudioStream" id=21]
+[ext_resource path="res://Assets/audio/BGM_bensound-scifi.ogg" type="AudioStream" id=22]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.25
+} ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 24
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 17 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
+
+[node name="Gameplay" type="Node"]
+
+script = ExtResource( 1 )
+Right_commands = ExtResource( 2 )
+Left_commands = ExtResource( 3 )
+Shoot_commands = ExtResource( 4 )
+Asteroids = ExtResource( 5 )
+BlackHoles = ExtResource( 6 )
+max_command_buffer = 15
+velocity = 200
+max_command_frame_counter = 10
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( 430.99, 245.351 )
+frames = SubResource( 1 )
+animation = "default"
+frame = 2
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ship" parent="." index="1" instance=ExtResource( 13 )]
+
+position = Vector2( 432.017, 235.128 )
+
+[node name="BlackHoles" type="Node" parent="." index="2"]
+
+[node name="AsteroidPool" type="Node" parent="." index="3"]
+
+[node name="BarSet" type="Node" parent="." index="4"]
+
+editor/display_folded = true
+
+[node name="BarSprite" type="Sprite" parent="BarSet" index="0"]
+
+position = Vector2( 431.918, 420.886 )
+texture = ExtResource( 14 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="SenderSprite" type="Sprite" parent="BarSet" index="1"]
+
+position = Vector2( 97.0007, 427 )
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="MonitorSprite" type="Sprite" parent="BarSet" index="2"]
+
+position = Vector2( 767, 428 )
+texture = ExtResource( 16 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="LatencyLabel" type="Label" parent="BarSet" index="3"]
+
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -173.0
+margin_top = -133.0
+margin_right = -17.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+text = "Latency
+8.8"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="CommandStartPoint" type="Position2D" parent="." index="5"]
+
+position = Vector2( 97.0007, 435 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CommandExecutePoint" parent="." index="6" instance=ExtResource( 18 )]
+
+position = Vector2( 700, 435 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="SpawnTimer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = false
+
+[node name="ObstacleSpawnPositions" type="Node" parent="." index="8"]
+
+editor/display_folded = true
+
+[node name="1" type="Position2D" parent="ObstacleSpawnPositions" index="0"]
+
+position = Vector2( 205, 18 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="2" type="Position2D" parent="ObstacleSpawnPositions" index="1"]
+
+position = Vector2( 432, 18 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="3" type="Position2D" parent="ObstacleSpawnPositions" index="2"]
+
+position = Vector2( 660.351, 16.3245 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="4" type="Position2D" parent="ObstacleSpawnPositions" index="3"]
+
+position = Vector2( 26.6396, 242.777 )
+
+[node name="5" type="Position2D" parent="ObstacleSpawnPositions" index="4"]
+
+position = Vector2( 831.656, 237.732 )
+
+[node name="6" type="Position2D" parent="ObstacleSpawnPositions" index="5"]
+
+position = Vector2( 281, 381.181 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="7" type="Position2D" parent="ObstacleSpawnPositions" index="6"]
+
+position = Vector2( 431.546, 381 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="8" type="Position2D" parent="ObstacleSpawnPositions" index="7"]
+
+position = Vector2( 575, 381 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="GameplayHUD" parent="." index="9" instance=ExtResource( 19 )]
+
+[node name="GameOverHUD" parent="." index="10" instance=ExtResource( 20 )]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="." index="11"]
+
+stream = ExtResource( 21 )
+volume_db = -15.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="BGM" type="AudioStreamPlayer" parent="." index="12"]
+
+stream = ExtResource( 22 )
+volume_db = -10.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[connection signal="hit" from="Ship" to="." method="game_over"]
+
+[connection signal="call_left" from="CommandExecutePoint" to="." method="force_ship_turn_left"]
+
+[connection signal="call_right" from="CommandExecutePoint" to="." method="force_ship_turn_right"]
+
+[connection signal="call_shoot" from="CommandExecutePoint" to="." method="force_ship_shoot_laser"]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+
+[connection signal="back_to_main_menu" from="GameOverHUD" to="." method="goto_mainmenu"]
+
+[connection signal="restart_game" from="GameOverHUD" to="." method="restart_gameplay"]
+
+
