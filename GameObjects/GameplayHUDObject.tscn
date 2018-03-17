@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/GameplayHUDObject.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/GameplayHUDObject.cs" type="Script" id=1]
 [ext_resource path="res://Assets/font/THSarabunNew.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
@@ -11,7 +11,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[node name="GameplayHUD" type="CanvasLayer"]
+[node name="GameplayHUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -31,6 +31,7 @@ margin_top = -152.0
 margin_right = 152.0
 margin_bottom = 16.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -51,6 +52,6 @@ wait_time = 3.0
 one_shot = true
 autostart = false
 
-[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="timeout" from="MessageTimer" to="." method="OnMessageTimerTimeout"]
 
 
