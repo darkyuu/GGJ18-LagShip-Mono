@@ -28,11 +28,17 @@ public class CommandExecutePoint : Area2D
     public void OnCommandExecutePointBodyEntered(RigidBody2D body)
     {
         if(body.GetName().Find("TurnRightCommand") != -1)
+        {
             this.EmitSignal("CallRight");
+        }
         else if(body.GetName().Find("TurnLeftCommand") != -1)
+        {
             this.EmitSignal("CallLeft");
-        else 
+        }
+        else
+        {
             this.EmitSignal("CallShoot");
+        } 
 
         this.globals.currentCommandBuffer -= 1;
         body.QueueFree();

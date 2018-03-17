@@ -32,6 +32,6 @@ texture = ExtResource( 2 )
 position = Vector2( 0.875967, 1.16796 )
 shape = SubResource( 1 )
 
-[connection signal="body_entered" from="." to="." method="_on_CommandExecutePoint_body_entered"]
+[connection signal="body_entered" from="." to="." method="OnCommandExecutePointBodyEntered"]
 
 

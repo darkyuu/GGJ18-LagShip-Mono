@@ -57,6 +57,7 @@
     <Compile Include="Scripts\CommandExecutePoint.cs" />
     <Compile Include="Scripts\GameOverHUD.cs" />
     <Compile Include="Scripts\GameplayHUDObject.cs" />
+    <Compile Include="Scripts\GameplayScene.cs" />
     <Compile Include="Scripts\MenuHUD.cs" />
     <Compile Include="Scripts\MenuScene.cs" />
     <Compile Include="Scripts\PlayerBulletObject.cs" />

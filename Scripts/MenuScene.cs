@@ -29,6 +29,6 @@ public class MenuScene : Node
 	public void NewGame()
     {
 		bgm.Stop();
-		this.globals.GotoScene(this, "BlankScene");
+		this.globals.GotoScene(this, "GameplayScene");
 	}
 }

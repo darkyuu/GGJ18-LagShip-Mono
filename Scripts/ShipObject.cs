@@ -47,7 +47,7 @@ public class ShipObject : Area2D
             TurnLeft();
     }
 
-    private void Start()
+    public void Start()
     {
         SetPosition(currentPosition);
         SetRotation((float)currentDirection);
