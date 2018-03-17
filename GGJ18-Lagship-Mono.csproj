@@ -61,6 +61,9 @@
     <Compile Include="Scripts\MenuScene.cs" />
     <Compile Include="Scripts\PlayerBulletObject.cs" />
     <Compile Include="Scripts\ShipObject.cs" />
+    <Compile Include="Scripts\ShootCommandObject.cs" />
+    <Compile Include="Scripts\TurnLeftCommandObject.cs" />
+    <Compile Include="Scripts\TurnRightCommandObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
