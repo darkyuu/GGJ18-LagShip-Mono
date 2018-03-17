@@ -55,6 +55,7 @@
     <Compile Include="Scripts\BlackHoleObject.cs" />
     <Compile Include="Scripts\BlankScene.cs" />
     <Compile Include="Scripts\CommandExecutePoint.cs" />
+    <Compile Include="Scripts\GameOverHUD.cs" />
     <Compile Include="Scripts\MenuHUD.cs" />
     <Compile Include="Scripts\MenuScene.cs" />
     <Compile Include="Scripts\PlayerBulletObject.cs" />
