@@ -51,9 +51,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Autoload.cs" />
+    <Compile Include="Scripts\AsteroidObject.cs" />
     <Compile Include="Scripts\BlankScene.cs" />
     <Compile Include="Scripts\MenuHUD.cs" />
     <Compile Include="Scripts\MenuScene.cs" />
+    <Compile Include="Scripts\PlayerBulletObject.cs" />
+    <Compile Include="Scripts\ShipObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

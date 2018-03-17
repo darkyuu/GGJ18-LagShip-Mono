@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scripts/ShipObject.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ShipObject.cs" type="Script" id=1]
 [ext_resource path="res://GameObjects/PlayerBulletObject.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/sprite/spaceship.png" type="Texture" id=3]
 [ext_resource path="res://Assets/audio/laser_shot2.wav" type="AudioStream" id=4]
@@ -12,7 +12,7 @@ custom_solver_bias = 0.0
 radius = 8.56589
 height = 16.0905
 
-[node name="Ship" type="Area2D"]
+[node name="Ship" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -25,7 +25,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-Bullets = ExtResource( 2 )
+bullets = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -80,8 +80,8 @@ bus = "Master"
 
 [node name="ExplosionSpriteEffect" parent="." index="6" instance=ExtResource( 5 )]
 
-[connection signal="body_entered" from="." to="." method="_on_Ship_body_entered"]
+[connection signal="body_entered" from="." to="." method="OnShipBodyEntered"]
 
-[connection signal="animation_finished" from="ExplosionSpriteEffect" to="." method="_on_ExplosionSpriteEffect_animation_finished"]
+[connection signal="animation_finished" from="ExplosionSpriteEffect" to="." method="OnExplosionSpriteEffectAnimationFinished"]
 
 
