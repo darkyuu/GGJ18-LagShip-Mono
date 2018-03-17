@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Autoload.cs" />
     <Compile Include="Scripts\AsteroidObject.cs" />
+    <Compile Include="Scripts\BlackHoleObject.cs" />
     <Compile Include="Scripts\BlankScene.cs" />
     <Compile Include="Scripts\MenuHUD.cs" />
     <Compile Include="Scripts\MenuScene.cs" />
