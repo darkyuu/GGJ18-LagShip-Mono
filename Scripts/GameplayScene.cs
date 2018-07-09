@@ -138,7 +138,7 @@ public class GameplayScene : Node
     {
         currentCommandFrameCounter = 0;
         deathSound.Stop();
-        bgm.Stop();
+        bgm.Play();
         this.globals.paused = false;
         gameOverHUD.Hide(); 
         SetProcess(true);
